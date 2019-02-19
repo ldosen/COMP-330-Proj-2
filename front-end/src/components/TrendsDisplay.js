@@ -7,10 +7,10 @@ class TrendsDisplay extends React.Component {
   render() {
     return (
       <div>
-        <p>open TrendsDisplay</p>
+        <Button><p>open TrendsDisplay</p></Button>
         <TrendSelectors />
         <TopicList />
-        <p>close TrendsDisplay</p>
+        <Button><p>close TrendsDisplay</p></Button>
       </div>
     );
   }
