@@ -1,14 +1,13 @@
 import React from "react";
 import TrendSelector from "./TrendSelector";
+import "../css/TrendSelectors.css";
 
 class TrendSelectors extends React.Component {
   render() {
     return (
-      <div>
-        <p>open TrendSelectors</p>
+      <div id="trend-selectors">
         <TrendSelector />
         <TrendSelector />
-        <p>close TrendSelectors</p>
       </div>
     );
   }

@@ -1,10 +1,11 @@
 import React from "react";
+import "../css/TrendSelector.css";
 
 class TrendSelector extends React.Component {
   render() {
     return (
-      <div>
-        <p>this is a TrendSelector</p>
+      <div id="trend-selector">
+        <p>TrendSelector</p>
       </div>
     );
   }
