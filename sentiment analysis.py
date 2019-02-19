@@ -2,6 +2,8 @@ import numpy as np
 import re
 import nltk
 import pandas as pd
+import pickle
+import os
 from sklearn.linear_model import  LogisticRegression
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import GridSearchCV
@@ -61,7 +63,15 @@ gs_lr_tfidf = GridSearchCV(lr_tfidf, param_grid,
                            scoring='accuracy',
                            cv=5,
                            verbose=1,
-                           n_jobs= 1)
+                           n_jobs=1)
 
 gs_lr_tfidf.fit(X_train, y_train)
+clf = gs_lr_tfidf.best_estimator_
+
+dest = os.path.join('tweetclassifier', 'pkl_objects')
+if not os.path.exists(dest):
+    os.makedirs(dest)
+pickle.dump(stop, open(os.path.join(dest, 'stopwords.pkl'), 'wb'), protocol=4)
+pickle.dump(clf, open(os.path.join(dest, 'classifier.pkl'), 'wb'), protocol=4)
+pickle.dump(tfidf, open(os.path.join(dest, "vectorizer.pkl"), 'wb'), protocol=4)
 
