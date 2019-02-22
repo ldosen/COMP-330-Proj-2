@@ -1,0 +1,46 @@
+# vim generated stuff{{{
+# swap
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+# Vundle Plugin Manager
+~/.vim/bundle/*
+bundle/*
+#}}}
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+build/
+gen/
+target/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Emacs files
+*~
+\#*\#
+
+# IDEA files
+.idea/
+
+# OsX Files 
+.DS_Store
+
+# Python Files 
+__pycache__

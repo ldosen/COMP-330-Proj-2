@@ -5,11 +5,14 @@ class TopicList extends React.Component {
   render() {
     return (
       <div>
-        <p>open TopicList</p>
         <Topic />
         <Topic />
         <Topic />
-        <p>close TopicList</p>
+        <Topic />
+        <Topic />
+        <Topic />
+        <Topic />
+        <Topic />
       </div>
     );
   }
