@@ -9,8 +9,8 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-client.get('search/tweets', {q: '#NationalMargaritaDay'}, function(error, tweets, response) {
+client.get('search/tweets', {q: '#Eminem since:2018-12-01', count: 100 }, function(error, tweets, response) {
    tweets.statuses.forEach(function(tweet) {
-   	console.log("tweet: " + tweet.text)
+     console.log("tweet: " + tweet.text)
    });
 });

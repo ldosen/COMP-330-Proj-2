@@ -8,6 +8,7 @@
     "react-dom": "^16.8.2",
     "react-materialize": "^2.6.0",
     "react-scripts": "2.1.5",
+    "twit": "^2.2.11",
     "twitter": "^1.7.1"
   },
   "scripts": {
