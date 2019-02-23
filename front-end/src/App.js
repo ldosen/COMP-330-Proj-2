@@ -9,10 +9,18 @@ class App extends React.Component {
     selectedTopic: 1
   };
 
+  topicInfo = {
+    highlightedTweetMessage: "Highlighted Tweet Message"
+  };
+
   selectTopic = listPosition => {
     this.setState({
       selectedTopic: listPosition
     });
+  };
+
+  handleTopicInfo = data => {
+    this.topicInfo.highlightedTweetMessage = "different message " + `${data}`;
   };
 
   render() {
@@ -31,6 +39,7 @@ class App extends React.Component {
                   name="topic1"
                   listPosition={1}
                   selectedTopic={this.state.selectedTopic}
+                  setTopicInfo={this.handleTopicInfo}
                 />
               </li>
 
@@ -43,6 +52,7 @@ class App extends React.Component {
                   name="topic2"
                   listPosition={2}
                   selectedTopic={this.state.selectedTopic}
+                  setTopicInfo={this.handleTopicInfo}
                 />
               </li>
 
@@ -55,6 +65,7 @@ class App extends React.Component {
                   name="topic3"
                   listPosition={3}
                   selectedTopic={this.state.selectedTopic}
+                  setTopicInfo={this.handleTopicInfo}
                 />
               </li>
 
@@ -67,6 +78,7 @@ class App extends React.Component {
                   name="topic4"
                   listPosition={4}
                   selectedTopic={this.state.selectedTopic}
+                  setTopicInfo={this.handleTopicInfo}
                 />
               </li>
 
@@ -79,6 +91,7 @@ class App extends React.Component {
                   name="topic5"
                   listPosition={5}
                   selectedTopic={this.state.selectedTopic}
+                  setTopicInfo={this.handleTopicInfo}
                 />
               </li>
 
@@ -91,6 +104,7 @@ class App extends React.Component {
                   name="topic6"
                   listPosition={6}
                   selectedTopic={this.state.selectedTopic}
+                  setTopicInfo={this.handleTopicInfo}
                 />
               </li>
 
@@ -103,6 +117,7 @@ class App extends React.Component {
                   name="topic7"
                   listPosition={7}
                   selectedTopic={this.state.selectedTopic}
+                  setTopicInfo={this.handleTopicInfo}
                 />
               </li>
 
@@ -115,6 +130,7 @@ class App extends React.Component {
                   name="topic8"
                   listPosition={8}
                   selectedTopic={this.state.selectedTopic}
+                  setTopicInfo={this.handleTopicInfo}
                 />
               </li>
 
@@ -127,6 +143,7 @@ class App extends React.Component {
                   name="topic9"
                   listPosition={9}
                   selectedTopic={this.state.selectedTopic}
+                  setTopicInfo={this.handleTopicInfo}
                 />
               </li>
 
@@ -139,12 +156,12 @@ class App extends React.Component {
                   name="topic10"
                   listPosition={10}
                   selectedTopic={this.state.selectedTopic}
+                  setTopicInfo={this.handleTopicInfo}
                 />
               </li>
             </ol>
           </div>
-
-          <TopicInfo />
+          <TopicInfo info={this.topicInfo} />
         </div>
       </div>
     );

@@ -1,8 +1,8 @@
 import React from "react";
 
-const HighlightedTweet = () => (
+const HighlightedTweet = props => (
   <div id="highlighted-tweet">
-    <p>Highlighted Tweet</p>
+    <p>{props.message}</p>
   </div>
 );
 

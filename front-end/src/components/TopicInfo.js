@@ -2,13 +2,12 @@ import React from "react";
 import Graph from "./Graph";
 import HighlightedTweet from "./HighlightedTweet";
 import MiscInfo from "./MiscInfo";
-import Topic from "./Topic";
 
-class TopicInfo extends Topic {
+class TopicInfo extends React.Component {
   render() {
     return (
       <div id="topic-info-container">
-        <HighlightedTweet />
+        <HighlightedTweet message={this.props.info.highlightedTweetMessage} />
         <Graph />
         <MiscInfo />
       </div>
