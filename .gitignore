@@ -44,3 +44,5 @@ local.properties
 
 # Python Files 
 __pycache__
+#Hide env variables
+.env
