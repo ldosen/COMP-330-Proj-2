@@ -31,8 +31,6 @@ T.get('trends/place', params, function (err, data, response) {
     trends.sort(function(a,b){
         return b.tweet_volume-a.tweet_volume
     })
-    console.log(JSON.stringify(trends,undefined,2));
-    // var obj = JSON.parse(JSON.stringify(data,undefined,2));
-    // console.log(obj[0].trends[0].tweet_volume);
-    //Try with twitter package instead of twit
+    // console.log(JSON.stringify(trends,undefined,2));
+    console.log(JSON.stringify(trends.slice(0,10),undefined,2));
 })
