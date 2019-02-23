@@ -2,12 +2,12 @@ import React from "react";
 import Graph from "./Graph";
 import HighlightedTweet from "./HighlightedTweet";
 import MiscInfo from "./MiscInfo";
-import "../css/TopicInfoDisplay.css";
+import Topic from "./Topic";
 
-class TopicInfoDisplay extends React.Component {
+class TopicInfo extends Topic {
   render() {
     return (
-      <div id="topic-info-display-container">
+      <div id="topic-info-container">
         <HighlightedTweet />
         <Graph />
         <MiscInfo />
@@ -16,4 +16,4 @@ class TopicInfoDisplay extends React.Component {
   }
 }
 
-export default TopicInfoDisplay;
+export default TopicInfo;

@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/MiscInfo.css";
 
 class MiscInfo extends React.Component {
   render() {

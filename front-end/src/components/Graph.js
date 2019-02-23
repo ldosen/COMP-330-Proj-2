@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/Graph.css";
 
 class Graph extends React.Component {
   render() {

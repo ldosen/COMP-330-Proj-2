@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/HighlightedTweet.css";
 
 class HighlightedTweet extends React.Component {
   render() {
