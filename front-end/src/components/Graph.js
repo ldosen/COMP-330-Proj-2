@@ -1,8 +1,8 @@
 import React from "react";
 
-const Graph = () => (
+const Graph = props => (
   <div id="graph">
-    <p>Graph</p>
+    <p>{props.graphData}</p>
   </div>
 );
 

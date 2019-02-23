@@ -28,3 +28,19 @@
 .highlighted {
   background: yellow;
 }
+
+.sentiment {
+  float: right;
+}
+
+#highlighted-tweet {
+  text-align: center;
+}
+
+#graph {
+  text-align: center;
+}
+
+#misc-info {
+  text-align: center;
+}

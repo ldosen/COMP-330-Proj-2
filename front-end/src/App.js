@@ -5,12 +5,17 @@ import TopicInfo from "./components/TopicInfo";
 import "./App.css";
 
 class App extends React.Component {
+  //SERVER TO-DO: retreive topics from server here and put in map called "topics" along with listPositions
   state = {
     selectedTopic: 1
   };
 
   topicInfo = {
-    highlightedTweetMessage: "Highlighted Tweet Message"
+    highlightedTweetMessage: undefined,
+    graphStuff: undefined,
+    miscInfo1: undefined,
+    miscInfo2: undefined,
+    miscInfo3: undefined
   };
 
   selectTopic = listPosition => {
@@ -20,7 +25,11 @@ class App extends React.Component {
   };
 
   handleTopicInfo = data => {
-    this.topicInfo.highlightedTweetMessage = "different message " + `${data}`;
+    this.topicInfo.highlightedTweetMessage = data.highlightedTweetStuff;
+    this.topicInfo.graphStuff = data.graphStuff;
+    this.topicInfo.miscInfo1 = data.miscInfo1;
+    this.topicInfo.miscInfo2 = data.miscInfo2;
+    this.topicInfo.miscInfo3 = data.miscInfo3;
   };
 
   render() {
