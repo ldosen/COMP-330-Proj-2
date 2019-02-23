@@ -9,40 +9,44 @@ class App extends React.Component {
     return (
       <div>
         <Titles />
-        <ol>
-          <li>
-            <Topic name="topic1" />
-          </li>
-          <li>
-            <Topic name="topic1" />
-          </li>
-          <li>
-            <Topic name="topic1" />
-          </li>
-          <li>
-            <Topic name="topic1" />
-          </li>
-          <li>
-            <Topic name="topic1" />
-          </li>
-          <li>
-            <Topic name="topic1" />
-          </li>
-          <li>
-            <Topic name="topic1" />
-          </li>
-          <li>
-            <Topic name="topic1" />
-          </li>
-          <li>
-            <Topic name="topic1" />
-          </li>
-          <li>
-            <Topic name="topic1" />
-          </li>
-        </ol>
+        <div id="topics-display-container">
+          <div id="topic-list-container">
+            <ol>
+              <li>
+                <Topic name="topic1" />
+              </li>
+              <li>
+                <Topic name="topic1" />
+              </li>
+              <li>
+                <Topic name="topic1" />
+              </li>
+              <li>
+                <Topic name="topic1" />
+              </li>
+              <li>
+                <Topic name="topic1" />
+              </li>
+              <li>
+                <Topic name="topic1" />
+              </li>
+              <li>
+                <Topic name="topic1" />
+              </li>
+              <li>
+                <Topic name="topic1" />
+              </li>
+              <li>
+                <Topic name="topic1" />
+              </li>
+              <li>
+                <Topic name="topic1" />
+              </li>
+            </ol>
+          </div>
 
-        <TopicInfo />
+          <TopicInfo />
+        </div>
       </div>
     );
   }
