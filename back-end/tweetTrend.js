@@ -13,24 +13,9 @@ var params = {
 }
 
 T.get('trends/place', params, function (err, data, response) {
-    // console.log(data[0]);
-    // data[0].forEach(function(info)){
-    //     console.log("topic: " + info.name);
-    // }
-    // for each(var item in data[0]){
-    //     console.log(item.name);
-    // }
-    // data[0].trends.forEach(function(tweet){
-    // console.log("tweet:" + tweet.name)
-    // })
-    // data[0].forEach(function(tweet){
-    //     console.log(tweet.name);
-    // })
-    // console.log(JSON.stringify(data, undefined, 2))
     var trends = data[0].trends;
     trends.sort(function(a,b){
         return b.tweet_volume-a.tweet_volume
     })
-    // console.log(JSON.stringify(trends,undefined,2));
     console.log(JSON.stringify(trends.slice(0,10),undefined,2));
 })
