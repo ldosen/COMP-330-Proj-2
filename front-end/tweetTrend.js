@@ -27,4 +27,5 @@ T.get('trends/place', params, function (err, data, response) {
     //     console.log(tweet.name);
     // })
     console.log(JSON.stringify(data, undefined, 2))
+    //Try with twitter package instead of twit
 })
