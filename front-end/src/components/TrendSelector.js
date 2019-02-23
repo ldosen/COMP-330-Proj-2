@@ -5,7 +5,7 @@ class TrendSelector extends React.Component {
   render() {
     return (
       <div id="trend-selector">
-        <p>TrendSelector</p>
+        <p>{this.props.name}</p>
       </div>
     );
   }

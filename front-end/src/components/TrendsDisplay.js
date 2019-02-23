@@ -10,7 +10,7 @@ class TrendsDisplay extends React.Component {
       <div>
         <TrendSelectors />
         <div id="trends-display-container">
-          <TopicList id="topic-list" />
+          <TopicList getTrends={this.props.getTrends} id="topic-list" />
           <TopicInfoDisplay id="topic-info-display" />
         </div>
       </div>

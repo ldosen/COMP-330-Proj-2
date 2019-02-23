@@ -6,8 +6,8 @@ class TrendSelectors extends React.Component {
   render() {
     return (
       <div id="trend-selectors">
-        <TrendSelector />
-        <TrendSelector />
+        <TrendSelector name="Hashtags" />
+        <TrendSelector name="Mentions" />
       </div>
     );
   }

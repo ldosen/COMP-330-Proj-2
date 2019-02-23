@@ -4,7 +4,7 @@ class Topic extends React.Component {
   render() {
     return (
       <div>
-        <p>this is a Topic</p>
+        <p>{this.props.name}</p>
       </div>
     );
   }
