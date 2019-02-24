@@ -7,7 +7,8 @@ import "./App.css";
 class App extends React.Component {
   //SERVER TO-DO: retreive topics from server here and put in map called "topics" along with listPositions
   state = {
-    selectedTopic: 1
+    selectedTopic: 1,
+    data: null
   };
 
   topicInfo = {
@@ -172,6 +173,8 @@ class App extends React.Component {
           </div>
           <TopicInfo info={this.topicInfo} />
         </div>
+        <p className="App-intro">{this.state.data}</p>
+
       </div>
     );
   }
