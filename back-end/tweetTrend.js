@@ -7,15 +7,19 @@ var T = new Twit({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 
 });
-var params = {
-    id: '2379574'
-    // count: 3
-}
+function getTrend() {
 
-T.get('trends/place', params, function (err, data, response) {
-    var trends = data[0].trends;
-    trends.sort(function(a,b){
-        return b.tweet_volume-a.tweet_volume
+    var params = {
+        id: '2379574'
+        // count: 3
+    }
+    T.get('trends/place', params, function (err, data, response) {
+        var trends = data[0].trends;
+        trends.sort(function (a, b) {
+            return b.tweet_volume - a.tweet_volume
+        })
+        return (JSON.stringify(trends.slice(0, 10), undefined, 2));
     })
-    console.log(JSON.stringify(trends.slice(0,10),undefined,2));
-})
+
+}
+getTrend();
