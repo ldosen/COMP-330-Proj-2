@@ -46,5 +46,3 @@ local.properties
 __pycache__
 #Hide env variables
 .env
-# Node stuff
-*node_modules
