@@ -189,7 +189,7 @@ class App extends React.Component {
           </div>
           <TopicInfo info={this.topicInfo} />
         </div>
-        <p className="App-intro">{this.state.data}</p>
+        <p className="App-intro">{JSON.stringify(this.state.data)}</p>
 
       </div>
     );
