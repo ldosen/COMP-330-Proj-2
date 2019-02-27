@@ -2,9 +2,8 @@ import React from "react";
 
 const MiscInfo = props => (
   <div id="misc-info">
-    <p>{props.miscInfo1}</p>
-    <p>{props.miscInfo2}</p>
-    <p>{props.miscInfo3}</p>
+    <h3>Tweet Volume:</h3>
+    <h2>{props.miscInfo1}</h2>
   </div>
 );
 
