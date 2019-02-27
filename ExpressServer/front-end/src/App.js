@@ -6,8 +6,26 @@ import TopicInfo from "./components/TopicInfo";
 class App extends React.Component {
   //SERVER TO-DO: retreive topics from server here and put in map called "topics" along with listPositions
   state = {
-    selectedTopic: 1
+    selectedTopic: 1,
+    data: null
   };
+  componentDidMount() {
+    // Call our fetch function below once the component mounts
+    this.callBackendAPI()
+      .then(res => this.setState({ data: res.express }))
+      .catch(err => console.log(err));
+  }
+  // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
+  callBackendAPI = async () => {
+    const response = await fetch('/express_backend');
+    const body = await response.json();
+
+    if (response.status !== 200) {
+      throw Error(body.message)
+    }
+    return body;
+  };
+
 
   allTopics = [
     "Cohen",
@@ -20,6 +38,7 @@ class App extends React.Component {
     "Mark Meadows",
     "#PokemonDay",
     "Pokémon"
+    // this.state.data.express[0].name
   ];
 
   topicInfo = {
