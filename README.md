@@ -1,2 +1,2 @@
-# COMP-330-Proj-2
-An extension of project 1 from COMP 330. Spring 2019
+# Tweettrends
+Gather the top 10 trending tweets and do sentiment analysis on them.
