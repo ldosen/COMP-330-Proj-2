@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "dotenv": "^6.2.0",
+    "plotly.js": "^1.45.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-materialize": "^2.6.0",
