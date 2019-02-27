@@ -10,6 +10,8 @@
     "react-materialize": "^2.6.0",
     "react-plotly.js": "^2.3.0",
     "react-scripts": "2.1.5",
+    "react-tweet-embed": "^1.1.1",
+    "react-twitter-embed": "^2.0.4",
     "twit": "^2.2.11",
     "twitter": "^1.7.1"
   },
