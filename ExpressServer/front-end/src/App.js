@@ -10,22 +10,22 @@ class App extends React.Component {
     data: null
   };
   componentDidMount() {
-    // Call our fetch function below once the component mounts
-    this.callBackendAPI()
-      .then(res => this.setState({ data: res.express }))
-      .catch(err => console.log(err));
+      // Call our fetch function below once the component mounts
+    // this.callBackendAPI()
+    //   .then(res => this.setState({ data: res.express }))
+    //   .catch(err => console.log(err));
+    this.setState({data: this.callBackendAPI()});
   }
-  // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
+    // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
   callBackendAPI = async () => {
     const response = await fetch('/express_backend');
     const body = await response.json();
 
     if (response.status !== 200) {
-      throw Error(body.message)
+      throw Error(body.message) 
     }
     return body;
   };
-
 
   allTopics = [
     "Cohen",
@@ -38,8 +38,17 @@ class App extends React.Component {
     "Mark Meadows",
     "#PokemonDay",
     "Pokémon"
-    // this.state.data.express[0].name
   ];
+  // allTopics = []
+  // allTopics[0] = 
+  
+  // parseServerInfo = () => {
+  //   const original = this.state.data;
+  //   const parsed = JSON.parse(original);
+
+  //   console.log(original.express[0].name);
+  // }
+
 
   topicInfo = {
     name: undefined,
@@ -66,6 +75,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="full-wrapper">
+      <p className="App-intro">{this.state.data}</p>
         <div id="sub-wrapper">
           <Titles />
           <div id="topics-display-container">
@@ -73,7 +83,9 @@ class App extends React.Component {
               <ol id="topic-list">
                 <li
                   onClick={() => {
+                    console.log(this.state.data);
                     this.selectTopic(1);
+                    console.log(this.state.data);
                   }}
                 >
                   <Topic
