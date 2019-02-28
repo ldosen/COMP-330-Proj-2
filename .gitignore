@@ -46,3 +46,6 @@ local.properties
 __pycache__
 #Hide env variables
 .env
+
+# Node Stuff
+.cache
