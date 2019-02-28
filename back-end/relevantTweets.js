@@ -11,5 +11,4 @@ T.get('search/tweets', { q: '#Eminem since:2018-12-01', count: 100 }, function(e
     data.statuses.forEach(function(tweet){
         console.log("tweet:" + tweet.text)
     })
-    // console.log(data)
   })
