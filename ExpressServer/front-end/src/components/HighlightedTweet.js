@@ -7,9 +7,7 @@ const HighlightedTweet = props => (
       Most recent tweet about {props.name}:
     </h3>
 
-    <div id="highlighted-tweet">
-      <TweetEmbed id={props.id} />
-    </div>
+    <h2 id="highlighted-tweet">"{props.tweetMessage}"</h2>
   </div>
 );
 

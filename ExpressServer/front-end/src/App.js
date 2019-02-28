@@ -6,26 +6,43 @@ import TopicInfo from "./components/TopicInfo";
 class App extends React.Component {
   //SERVER TO-DO: retreive topics from server here and put in map called "topics" along with listPositions
   state = {
-    selectedTopic: 1
+    selectedTopic: 1,
+    data: null
   };
+  componentDidMount() {
+    fetch("/express_backend")
+      .then(res => {
+        console.log(res);
+        return res.json();
+      })
+      .then(serverData => {
+        console.log(serverData);
+        this.allTopics = serverData.express.map(x => x.name);
+        this.allTweetVolumes = serverData.express.map(x => x.tweet_volume);
+        this.allSentiments = serverData.misc.map(x => x.sentiment);
+        this.allTweetMessages = serverData.misc.map(x => x.tweetMessage);
+        this.allGraphX = serverData.misc.map(x => x.graph.xData);
+        this.allGraphY = serverData.misc.map(x => x.graph.yData);
+        this.setState({ data: serverData });
+      });
+  }
 
-  allTopics = [
-    "Cohen",
-    "Jim Jordan",
-    "#PokemonSwordShield",
-    "#PokemonDirect",
-    "Scorbunny",
-    "Grookey",
-    "Sobble",
-    "Mark Meadows",
-    "#PokemonDay",
-    "Pokémon"
-  ];
+  allTopics = [];
+
+  allTweetVolumes = [];
+
+  allSentiments = [];
+
+  allTweetMessages = [];
+
+  allGraphX = [];
+
+  allGraphY = [];
 
   topicInfo = {
     name: undefined,
     sentiment: undefined,
-    highlightedTweetId: undefined,
+    tweetMessage: undefined,
     graph: undefined,
     miscInfo1: undefined
   };
@@ -36,12 +53,28 @@ class App extends React.Component {
     });
   };
 
-  handleTopicInfo = data => {
-    this.topicInfo.name = data.name;
-    this.topicInfo.sentiment = data.sentiment;
-    this.topicInfo.highlightedTweetId = data.highlightedTweetId;
-    this.topicInfo.graph = data.graph;
-    this.topicInfo.miscInfo1 = data.miscInfo1;
+  handleTopicInfo = listPosition => {
+    this.topicInfo.name = this.allTopics[listPosition - 1];
+    this.topicInfo.sentiment = this.allSentiments[listPosition - 1];
+    this.topicInfo.tweetMessage = this.allTweetMessages[listPosition - 1];
+    this.topicInfo.graph = {
+      xData: this.allGraphX[listPosition - 1],
+      yData: this.allGraphY[listPosition - 1]
+    };
+    this.topicInfo.miscInfo1 = this.allTweetVolumes[listPosition - 1];
+  };
+
+  getTopicInfo = listPosition => {
+    return {
+      name: this.allTopics[listPosition - 1],
+      sentiment: this.allSentiments[listPosition - 1],
+      highlightedTweetMessage: this.allTweetMessages[listPosition - 1],
+      graph: {
+        xData: this.allGraphX[listPosition - 1],
+        yData: this.allGraphY[listPosition - 1]
+      },
+      miscInfo1: this.allTweetVolumes[listPosition - 1]
+    };
   };
 
   render() {
@@ -63,6 +96,7 @@ class App extends React.Component {
                     listPosition={1}
                     selectedTopic={this.state.selectedTopic}
                     setTopicInfo={this.handleTopicInfo}
+                    getTopicInfo={this.getTopicInfo}
                   />
                 </li>
 
@@ -73,9 +107,11 @@ class App extends React.Component {
                 >
                   <Topic
                     name={this.allTopics[1]}
+                    // name={this.state.data.express}
                     listPosition={2}
                     selectedTopic={this.state.selectedTopic}
                     setTopicInfo={this.handleTopicInfo}
+                    getTopicInfo={this.getTopicInfo}
                   />
                 </li>
 
@@ -89,12 +125,17 @@ class App extends React.Component {
                     listPosition={3}
                     selectedTopic={this.state.selectedTopic}
                     setTopicInfo={this.handleTopicInfo}
+                    getTopicInfo={this.getTopicInfo}
                   />
                 </li>
 
                 <li
                   onClick={() => {
                     this.selectTopic(4);
+                    console.log(
+                      JSON.stringify(this.state.data.express[0].name)
+                    );
+                    console.log(this.state.selectedTopic);
                   }}
                 >
                   <Topic
@@ -102,6 +143,7 @@ class App extends React.Component {
                     listPosition={4}
                     selectedTopic={this.state.selectedTopic}
                     setTopicInfo={this.handleTopicInfo}
+                    getTopicInfo={this.getTopicInfo}
                   />
                 </li>
 
@@ -115,6 +157,7 @@ class App extends React.Component {
                     listPosition={5}
                     selectedTopic={this.state.selectedTopic}
                     setTopicInfo={this.handleTopicInfo}
+                    getTopicInfo={this.getTopicInfo}
                   />
                 </li>
 
@@ -128,6 +171,7 @@ class App extends React.Component {
                     listPosition={6}
                     selectedTopic={this.state.selectedTopic}
                     setTopicInfo={this.handleTopicInfo}
+                    getTopicInfo={this.getTopicInfo}
                   />
                 </li>
 
@@ -141,6 +185,7 @@ class App extends React.Component {
                     listPosition={7}
                     selectedTopic={this.state.selectedTopic}
                     setTopicInfo={this.handleTopicInfo}
+                    getTopicInfo={this.getTopicInfo}
                   />
                 </li>
 
@@ -154,6 +199,7 @@ class App extends React.Component {
                     listPosition={8}
                     selectedTopic={this.state.selectedTopic}
                     setTopicInfo={this.handleTopicInfo}
+                    getTopicInfo={this.getTopicInfo}
                   />
                 </li>
 
@@ -167,6 +213,7 @@ class App extends React.Component {
                     listPosition={9}
                     selectedTopic={this.state.selectedTopic}
                     setTopicInfo={this.handleTopicInfo}
+                    getTopicInfo={this.getTopicInfo}
                   />
                 </li>
 
@@ -180,6 +227,7 @@ class App extends React.Component {
                     listPosition={10}
                     selectedTopic={this.state.selectedTopic}
                     setTopicInfo={this.handleTopicInfo}
+                    getTopicInfo={this.getTopicInfo}
                   />
                 </li>
               </ol>
