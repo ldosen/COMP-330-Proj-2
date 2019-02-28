@@ -7,3 +7,7 @@ An extension of project 1 from COMP 330. Spring 2019
 We used react-tweet-embed(https://github.com/capaj/react-tweet-embed) to aid in embedding the highlighted tweet in our react app.
 
 We used plot.ly (https://plot.ly/) for creating the graph of tweet volume in past 24 hours.
+
+# Tweettrends
+
+Gather the top 10 trending tweets and do sentiment analysis on them.
