@@ -10,38 +10,49 @@ class App extends React.Component {
     data: null
   };
   componentDidMount() {
-      // Call our fetch function below once the component mounts
-    // this.callBackendAPI()
-    //   .then(res => this.setState({ data: res.express }))
-    //   .catch(err => console.log(err));
-    this.setState({data: this.callBackendAPI()});
+    fetch("/express_backend")
+      .then(res => {
+        console.log(res);
+        return res.json();
+      })
+      .then(serverData => {
+        console.log(serverData);
+        this.allTopics = serverData.express.map(x=>x.name);
+        this.setState({ data: serverData });
+      });
   }
-    // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-  callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
-    const body = await response.json();
 
-    if (response.status !== 200) {
-      throw Error(body.message) 
-    }
-    return body;
-  };
+  // componentDidMount() {
+  //   // Call our fetch function below once the component mounts
+  //   this.callBackendAPI()
+  //     .then(res => this.setState({ data: res.express }))
+  //     .catch(err => console.log(err));
+  // }
+  // // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
+  // callBackendAPI = async () => {
+  //   const response = await fetch('/express_backend');
+  //   const body = await response.json();
 
-  allTopics = [
-    "Cohen",
-    "Jim Jordan",
-    "#PokemonSwordShield",
-    "#PokemonDirect",
-    "Scorbunny",
-    "Grookey",
-    "Sobble",
-    "Mark Meadows",
-    "#PokemonDay",
-    "Pokémon"
-  ];
+  //   if (response.status !== 200) {
+  //     throw Error(body.message)
+  //   }
+  //   return body;
+  // };
+  allTopics = []
+  //   "Brown",
+  //   "Jim Jordan",
+  //   "#PokemonSwordShield",
+  //   "#PokemonDirect",
+  //   "Scorbunny",
+  //   "Grookey",
+  //   "Sobble",
+  //   "Mark Meadows",
+  //   "#PokemonDay",
+  //   "Pokémon"
+  // ];
   // allTopics = []
   // allTopics[0] = 
-  
+
   // parseServerInfo = () => {
   //   const original = this.state.data;
   //   const parsed = JSON.parse(original);
@@ -61,6 +72,7 @@ class App extends React.Component {
   selectTopic = listPosition => {
     this.setState({
       selectedTopic: listPosition
+
     });
   };
 
@@ -75,7 +87,6 @@ class App extends React.Component {
   render() {
     return (
       <div id="full-wrapper">
-      <p className="App-intro">{this.state.data}</p>
         <div id="sub-wrapper">
           <Titles />
           <div id="topics-display-container">
@@ -83,14 +94,17 @@ class App extends React.Component {
               <ol id="topic-list">
                 <li
                   onClick={() => {
-                    console.log(this.state.data);
                     this.selectTopic(1);
-                    console.log(this.state.data);
+                    console.log(JSON.stringify(this.state.data.express[0].name));
+                    
+                    console.log(this.state.selectedTopic);
+                    // console.log(this.state.data);
                   }}
                 >
                   <Topic
                     id="top-list-item"
                     name={this.allTopics[0]}
+                    // name={JSON.stringify(this.state.data.express[0].name)}
                     listPosition={1}
                     selectedTopic={this.state.selectedTopic}
                     setTopicInfo={this.handleTopicInfo}
@@ -100,10 +114,12 @@ class App extends React.Component {
                 <li
                   onClick={() => {
                     this.selectTopic(2);
+
                   }}
                 >
                   <Topic
                     name={this.allTopics[1]}
+                    // name={this.state.data.express}
                     listPosition={2}
                     selectedTopic={this.state.selectedTopic}
                     setTopicInfo={this.handleTopicInfo}
@@ -126,6 +142,8 @@ class App extends React.Component {
                 <li
                   onClick={() => {
                     this.selectTopic(4);
+                    console.log(JSON.stringify(this.state.data.express[0].name));
+                    console.log(this.state.selectedTopic);
                   }}
                 >
                   <Topic
