@@ -9,7 +9,7 @@ class TopicInfo extends React.Component {
       <div id="topic-info-container">
         <HighlightedTweet
           name={this.props.info.name}
-          id={this.props.info.highlightedTweetId}
+          tweetMessage={this.props.info.tweetMessage}
         />
         <Graph
           xData={this.props.info.graph.xData}
