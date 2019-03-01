@@ -46,6 +46,9 @@ local.properties
 __pycache__
 #Hide env variables
 .env
+
 # Node Stuff
 .cache
 node_modules
+# Vs Code
+.vscode/*
