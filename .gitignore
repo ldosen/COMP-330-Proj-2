@@ -49,3 +49,5 @@ __pycache__
 
 # Node Stuff
 .cache
+# Vs Code
+ .vscode
