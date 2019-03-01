@@ -7,9 +7,8 @@ var T = new Twit({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 
 });
-T.get('search/tweets', { q: '#Eminem since:2018-12-01', count: 100 }, function(err, data, response) {
+T.get('search/tweets', { q: '#Eminem since:2018-12-01', count: 1 }, function(err, data, response) {
     data.statuses.forEach(function(tweet){
         console.log("tweet:" + tweet.text)
     })
-    // console.log(data)
   })
