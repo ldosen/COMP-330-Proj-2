@@ -11,6 +11,11 @@ An extension of project 1 from COMP 330. Spring 2019
 ## DESCRIPTION
 * This is web based application built using React js
 * This project was setup with create-React-app https://facebook.github.io/create-react-app/
+* A single page Web application 
+## Function
+* Displays top 10 trending tweets in the last 7 days 
+* Shows extra information for each of the tweets when you click them
+* 
  
 
 
