@@ -1,5 +1,6 @@
 import React from "react";
 
+//Renders main title and description for app
 const Titles = () => (
   <div>
     <h1 id="main-title">TWEETTRENDS</h1>

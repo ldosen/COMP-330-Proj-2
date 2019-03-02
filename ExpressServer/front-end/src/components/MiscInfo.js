@@ -1,5 +1,6 @@
 import React from "react";
 
+//Renders Tweet Volume for a given trend
 const MiscInfo = props => (
   <div id="misc-info">
     <h3>Tweet Volume:</h3>

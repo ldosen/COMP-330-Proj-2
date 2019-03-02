@@ -1,6 +1,7 @@
 import React from "react";
 import Plot from "react-plotly.js";
 
+//Graph Component - currently only renders a paragraph placeholder inside the container as the graph was not responsive
 const Graph = props => (
   <div id="graph-container">
     <p>Graph Placeholder</p>
