@@ -3,6 +3,8 @@ import Graph from "./Graph";
 import HighlightedTweet from "./HighlightedTweet";
 import MiscInfo from "./MiscInfo";
 
+//Container component for HighlightedTweet, Graph, and MiscInfo Components
+//passes appropriate data from its own props into props of each of those components
 class TopicInfo extends React.Component {
   render() {
     return (
