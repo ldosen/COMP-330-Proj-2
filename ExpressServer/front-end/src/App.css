@@ -164,3 +164,7 @@ li {
   color: #14171a;
   font-family: "Raleway, sans-serif";
 }
+
+.individual-topic:hover {
+  background: #f5f8fa;
+}
