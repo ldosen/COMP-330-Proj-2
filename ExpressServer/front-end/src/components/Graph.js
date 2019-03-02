@@ -2,12 +2,14 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 
 const options = {
+  title: {
+    display: true,
+    text: "% Positive Tweets/Day",
+    fontFamily: "Raleway",
+    fontColor: "#14171a"
+  },
   legend: {
-    labels: {
-      boxWidth: 0,
-      fontFamily: "Raleway",
-      fontColor: "#14171"
-    }
+    display: false
   },
   maintainAspectRatio: false // Don't maintain w/h ratio
 };
@@ -58,7 +60,6 @@ class Graph extends React.Component {
               labels: this.allDates,
               datasets: [
                 {
-                  label: "% Positive Tweets/Day",
                   data: this.props.yData,
                   fill: false, // Don't fill area under the line
                   borderColor: "green" // Line color
