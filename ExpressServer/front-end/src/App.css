@@ -41,6 +41,8 @@ li {
 }
 
 #topics-display-container {
+  width: 80vw;
+  height: 65vh;
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -63,8 +65,7 @@ li {
 }
 
 .individual-topic {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  height: 2.5vw;
   padding-left: 1em;
   background: #e1e8ed;
   color: #14171a;
@@ -72,6 +73,9 @@ li {
   border-width: 0.1em 0.2em 0.1em 0.2em;
   border-color: #aab8c2;
   margin-left: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #topic-info-container {

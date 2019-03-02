@@ -3,7 +3,8 @@ import Plot from "react-plotly.js";
 
 const Graph = props => (
   <div id="graph-container">
-    {}
+    <p>Graph Placeholder</p>
+    {/*
     <Plot
       data={[
         {
@@ -25,7 +26,7 @@ const Graph = props => (
         xaxis: { title: "Date" },
         yaxis: { title: "% Positive Tweets" }
       }}
-    />
+    /> */}
   </div>
 );
 
