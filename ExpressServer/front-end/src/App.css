@@ -131,8 +131,9 @@ li {
 #graph-container {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
-  padding-left: 2.5em;
-  padding-bottom: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #misc-info {
@@ -149,4 +150,10 @@ li {
 
 #misc-info > h3 {
   font-weight: 700;
+}
+
+.canvas-container {
+  position: absolute;
+  height: 40%;
+  width: 20%;
 }
