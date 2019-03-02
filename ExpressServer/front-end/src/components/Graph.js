@@ -7,41 +7,33 @@ const options = {
 
 //Graph Component - currently only renders a paragraph placeholder inside the container as the graph was not responsive
 class Graph extends React.Component {
+  //get dates for past 7 days
   allDates = [];
+  daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   setDates = () => {
-    const daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     const today = new Date();
+    if (today.getFullYear() % 4 === 0) {
+      this.daysPerMonth[1] = 29;
+    }
     const thisDate = today.getDate();
     const thisMonth = today.getMonth() + 1;
-    console.log("start setDates");
-    console.log("Today: " + thisMonth + "/" + thisDate);
     var dates = [];
     for (var i = 6; i >= 0; i--) {
       var arrayDate;
       var arrayMonth;
       if (thisDate - i <= 0) {
-        console.log("for i=" + i + ", thisDate - i <= 0");
         if (thisMonth - 1 <= 0) {
-          console.log("for i=" + i + ", thisMonth - 1 <= 0");
           arrayMonth = 12;
         } else {
-          console.log("for i=" + i + ", arrayMonth = thisMonth -1");
           arrayMonth = thisMonth - 1;
         }
-        console.log("thisDate - i = " + (thisDate - i));
-        console.log(
-          "days for month" + arrayMonth + ": " + daysPerMonth[arrayMonth - 1]
-        );
-        arrayDate = thisDate - i + daysPerMonth[arrayMonth - 1];
-        console.log("for i=" + i + ", arrayDate = " + arrayDate);
+        arrayDate = thisDate - i + this.daysPerMonth[arrayMonth - 1];
       } else {
         arrayMonth = thisMonth;
         arrayDate = thisDate - i;
       }
 
       dates[i] = `${arrayMonth}/${arrayDate}`;
-      console.log("dates[" + i + "] " + `${arrayMonth}/${arrayDate}`);
-      console.log("end setDates loop Iteration");
     }
     dates.reverse();
     return dates;
@@ -49,7 +41,6 @@ class Graph extends React.Component {
 
   render() {
     this.allDates = this.setDates();
-    console.log(this.allDates);
     return (
       <div id="graph-container">
         <article className="canvas-container">
@@ -68,29 +59,6 @@ class Graph extends React.Component {
             options={options}
           />
         </article>
-        {/*
-    <Plot
-      data={[
-        {
-          x: props.xData,
-          y: props.yData,
-          type: "scatter",
-          mode: "lines+points",
-          marker: { color: "red" }
-        }
-      ]}
-      layout={{
-        width: 320,
-        height: 240,
-        title: "Trend Positivity in Past 7 Days",
-        font: {
-          family: "Raleway, sans-serif",
-          color: "#14171a"
-        },
-        xaxis: { title: "Date" },
-        yaxis: { title: "% Positive Tweets" }
-      }}
-    /> */}
       </div>
     );
   }
