@@ -50,7 +50,7 @@ class Graph extends React.Component {
               datasets: [
                 {
                   label: "Temperature",
-                  data: [22, 19, 27, 23, 22, 24, 17],
+                  data: this.props.yData,
                   fill: false, // Don't fill area under the line
                   borderColor: "green" // Line color
                 }
