@@ -2,10 +2,18 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 
 const options = {
+  legend: {
+    labels: {
+      boxWidth: 0,
+      fontFamily: "Raleway",
+      fontColor: "#14171"
+    }
+  },
   maintainAspectRatio: false // Don't maintain w/h ratio
 };
 
-//Graph Component - currently only renders a paragraph placeholder inside the container as the graph was not responsive
+//Graph Component - gets past 7 dates for x-axis,
+//gets % postive tweets for each date for each trend from server
 class Graph extends React.Component {
   //get dates for past 7 days
   allDates = [];
@@ -41,6 +49,7 @@ class Graph extends React.Component {
 
   render() {
     this.allDates = this.setDates();
+
     return (
       <div id="graph-container">
         <article className="canvas-container">
@@ -49,7 +58,7 @@ class Graph extends React.Component {
               labels: this.allDates,
               datasets: [
                 {
-                  label: "Temperature",
+                  label: "% Positive Tweets/Day",
                   data: this.props.yData,
                   fill: false, // Don't fill area under the line
                   borderColor: "green" // Line color

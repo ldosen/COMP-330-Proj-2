@@ -22,6 +22,10 @@ li {
 #sub-wrapper {
   width: 80vw;
   height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #main-title {
@@ -132,7 +136,8 @@ li {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
