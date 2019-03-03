@@ -16,6 +16,7 @@ var params = {
   id: "2379574"
   // count: 3
 };
+
 T.get("trends/place", params, function (err, data, response) {
 
   var trends = data[0].trends;
@@ -27,7 +28,7 @@ T.get("trends/place", params, function (err, data, response) {
     ans2[i] = (({ name, tweet_volume }) => ({ name, tweet_volume }))(ans[i]);
   }
 for (let i = 0; i < 10; i++) {
-  T.get('search/tweets', { q: ans2[i].name, count: 2 }, function (err, data, response) {
+  T.get('search/tweets', { q: ans2[i].name, count: 2, lang: 'en' }, function (err, data, response) {
     data.statuses.forEach(function (tweet) {
       tweeList[i] = ({[ans2[i].name]: tweet.text});
     })
@@ -43,7 +44,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 // create a GET route
 app.get("/express_backend", (req, res) => {
   res.send({
-    express: ans2,
+    // express: ans2,
     // misc: allInfo,
     tweets: tweeList
   });
