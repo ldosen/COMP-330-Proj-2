@@ -17,3 +17,4 @@
 * Do sentiment analysis on them 
 * Shows extra information for each of the tweets when you click them
 * 
+## How to run / Requirements
