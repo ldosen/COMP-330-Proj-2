@@ -3,7 +3,6 @@ var Twit = require("twit");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
-let { PythonShell } = require("python-shell");
 
 var T = new Twit({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -66,39 +65,28 @@ function shortenTweet(inputTweet) {
   return resultTweet;
 }
 
-//commented out until fully integrated
-/*
-function runPy() {
-  return new Promise(async function(resolve, reject) {
-    let options = {
-      mode: "text",
-      scriptPath: "../back-end/python",
-      args: ["-m", "string value goes here"]
+function predict_sentiement(tweet){
+  const {PythonShell} = require("python-shell");
+  var pyshell = new PythonShell('./back-end/python/predict_sentiment.py');
+
+  pyshell.send(JSON.stringify([tweet]));
+
+  pyshell.on('message', function (message) {
+    // received a message sent from the Python script (a simple "print" statement)
+    console.log(message);
+  });
+
+// end the input stream and allow the process to exit
+  pyshell.end(function (err) {
+    if (err){
+      throw err;
     };
 
-    await PythonShell.run("predict_sentiment.py", options, function(
-      err,
-      results
-    ) {
-      if (err) throw err;
-      console.log("results: ");
-      for (let i of results) {
-        //console.log(i, "---->", typeof i)
-      }
-      resolve(results);
-    });
+    console.log('finished');
   });
 }
 
-function runMain() {
-  return new Promise(async function(resolve, reject) {
-    let r = await runPy();
-    //console.log() do whatever we want to do with the tweet here.
-  });
-}
 
-runMain(); //run main function
- */
 
 // dummy info
 const allInfo = [
