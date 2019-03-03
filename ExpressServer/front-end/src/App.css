@@ -117,6 +117,13 @@ li {
   text-align: center;
 }
 
+#highlighted-tweet-topic-name {
+  border-bottom-style: solid;
+  border-bottom-color: #1da1f2;
+  border-bottom-width: 1vh;
+  border-radius: 1vh;
+}
+
 .highlighted {
   background: #f5f8fa;
   border-width: thick;
