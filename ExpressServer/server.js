@@ -44,8 +44,8 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 // create a GET route
 app.get("/express_backend", (req, res) => {
   res.send({
-    // express: ans2,
-    // misc: allInfo,
+    express: ans2,
+    misc: allInfo,
     tweets: tweeList
   });
 });
