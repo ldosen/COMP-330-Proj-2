@@ -14,14 +14,17 @@
     "react-scripts": "2.1.5",
     "react-tweet-embed": "^1.1.1",
     "react-twitter-embed": "^2.0.4",
+    "serve": "^10.1.2",
     "twit": "^2.2.11",
     "twitter": "^1.7.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "nmp run build"
   },
   "proxy": "http://localhost:5000/",
   "eslintConfig": {
