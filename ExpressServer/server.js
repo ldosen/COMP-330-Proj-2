@@ -11,20 +11,33 @@ var T = new Twit({
 });
 var ans = [];
 var ans2 = [];
+var tweeList = [];
 var params = {
   id: "2379574"
   // count: 3
 };
-T.get("trends/place", params, function(err, data, response) {
+
+T.get("trends/place", params, function (err, data, response) {
+
   var trends = data[0].trends;
-  trends.sort(function(a, b) {
+  trends.sort(function (a, b) {
     return b.tweet_volume - a.tweet_volume;
   });
   ans = trends.slice(0, 10);
   for (let i = 0; i < ans.length; i++) {
     ans2[i] = (({ name, tweet_volume }) => ({ name, tweet_volume }))(ans[i]);
   }
+for (let i = 0; i < 10; i++) {
+  T.get('search/tweets', { q: ans2[i].name, count: 2, lang: 'en' }, function (err, data, response) {
+    data.statuses.forEach(function (tweet) {
+      tweeList[i] = ({[ans2[i].name]: tweet.text});
+    })
+  })
+
+}
 });
+
+
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
@@ -32,7 +45,8 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 app.get("/express_backend", (req, res) => {
   res.send({
     express: ans2,
-    misc: allInfo
+    misc: allInfo,
+    tweets: tweeList
   });
 });
 
