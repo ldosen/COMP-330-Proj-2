@@ -12,6 +12,7 @@
   "dependencies": {
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "python-shell": "^1.0.7",
     "twit": "^2.2.11"
   }
 }

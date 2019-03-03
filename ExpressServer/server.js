@@ -3,6 +3,8 @@ var Twit = require("twit");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
+let { PythonShell } = require("python-shell");
+
 var T = new Twit({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -17,10 +19,9 @@ var params = {
   // count: 3
 };
 
-T.get("trends/place", params, function (err, data, response) {
-
+T.get("trends/place", params, function(err, data, response) {
   var trends = data[0].trends;
-  trends.sort(function (a, b) {
+  trends.sort(function(a, b) {
     return b.tweet_volume - a.tweet_volume;
   });
   ans = trends.slice(0, 10);
@@ -28,16 +29,18 @@ T.get("trends/place", params, function (err, data, response) {
     ans2[i] = (({ name, tweet_volume }) => ({ name, tweet_volume }))(ans[i]);
   }
   for (let i = 0; i < 10; i++) {
-    T.get('search/tweets', { q: ans2[i].name, count: 1, lang: 'en' }, function (err, data, response) {
-      data.statuses.forEach(function (tweet) {
+    T.get("search/tweets", { q: ans2[i].name, count: 1, lang: "en" }, function(
+      err,
+      data,
+      response
+    ) {
+      data.statuses.forEach(function(tweet) {
         // tweeList[i] = ({[ans2[i].name]: tweet.text});
         tweeList[i] = tweet.text;
-      })
-    })
-
+      });
+    });
   }
 });
-
 
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
@@ -62,6 +65,37 @@ function shortenTweet(inputTweet) {
   }
   return resultTweet;
 }
+
+function runPy() {
+  return new Promise(async function(resolve, reject) {
+    let options = {
+      mode: "text",
+      scriptPath: "./back-end/python/predict_sentiment.py",
+      args: ["-m", "string value goes here"]
+    };
+
+    await PythonShell.run("predict_sentiment.py", options, function(
+      err,
+      results
+    ) {
+      if (err) throw err;
+      console.log("results: ");
+      for (let i of results) {
+        //console.log(i, "---->", typeof i)
+      }
+      resolve(results);
+    });
+  });
+}
+
+function runMain() {
+  return new Promise(async function(resolve, reject) {
+    let r = await runPy();
+    //console.log() do whatever we want to do with the tweet here.
+  });
+}
+
+runMain(); //run main function
 
 // dummy info
 const allInfo = [
