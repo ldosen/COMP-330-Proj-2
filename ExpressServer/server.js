@@ -66,11 +66,13 @@ function shortenTweet(inputTweet) {
   return resultTweet;
 }
 
+//commented out until fully integrated
+/*
 function runPy() {
   return new Promise(async function(resolve, reject) {
     let options = {
       mode: "text",
-      scriptPath: "./back-end/python/predict_sentiment.py",
+      scriptPath: "../back-end/python",
       args: ["-m", "string value goes here"]
     };
 
@@ -96,6 +98,7 @@ function runMain() {
 }
 
 runMain(); //run main function
+ */
 
 // dummy info
 const allInfo = [
