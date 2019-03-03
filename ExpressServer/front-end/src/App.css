@@ -187,10 +187,9 @@ li {
 
 #tweet-volume-label {
   margin: 0;
-  padding-bottom: 1vh;
 }
 
 #tweet-volume {
   margin: 0;
-  padding-top: 1vh;
+  margin-top: 2vh;
 }
