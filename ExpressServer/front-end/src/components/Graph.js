@@ -6,7 +6,8 @@ const options = {
     display: true,
     text: "% Positive Tweets/Day",
     fontFamily: "Raleway",
-    fontColor: "#14171a"
+    fontColor: "#14171a",
+    fontSize: 16
   },
   legend: {
     display: false
