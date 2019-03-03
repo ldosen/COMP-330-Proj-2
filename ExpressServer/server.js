@@ -3,6 +3,8 @@ var Twit = require("twit");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
+let {PythonShell} = require('python-shell')
+
 var T = new Twit({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -15,6 +17,7 @@ var params = {
   id: "2379574"
   // count: 3
 };
+
 T.get("trends/place", params, function(err, data, response) {
   var trends = data[0].trends;
   trends.sort(function(a, b) {
@@ -25,6 +28,7 @@ T.get("trends/place", params, function(err, data, response) {
     ans2[i] = (({ name, tweet_volume }) => ({ name, tweet_volume }))(ans[i]);
   }
 });
+
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
@@ -35,6 +39,35 @@ app.get("/express_backend", (req, res) => {
     misc: allInfo
   });
 });
+
+function runPy(){
+  return new Promise(async function(resolve, reject){
+    let options = {
+      mode: 'text',
+      scriptPath: './back-end/python/predict_sentiment.py',
+      args: ['-m', 'string value goes here']
+    };
+
+    await PythonShell.run('predict_sentiment.py', options, function (err, results) {
+      if (err) throw err;
+      console.log('results: ');
+      for(let i of results){
+        //console.log(i, "---->", typeof i)
+      }
+      resolve(results)
+    });
+  })
+}
+
+function runMain(){
+  return new Promise(async function(resolve, reject){
+    let r =  await runPy()
+    //console.log() do whatever we want to do with the tweet here.
+  })
+}
+
+runMain() //run main function
+
 
 // dummy info
 const allInfo = [
