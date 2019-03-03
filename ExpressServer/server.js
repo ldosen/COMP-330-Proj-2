@@ -3,7 +3,7 @@ var Twit = require("twit");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
-let {PythonShell} = require('python-shell')
+let { PythonShell } = require("python-shell");
 
 var T = new Twit({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -13,6 +13,7 @@ var T = new Twit({
 });
 var ans = [];
 var ans2 = [];
+var tweeList = [];
 var params = {
   id: "2379574"
   // count: 3
@@ -27,6 +28,18 @@ T.get("trends/place", params, function(err, data, response) {
   for (let i = 0; i < ans.length; i++) {
     ans2[i] = (({ name, tweet_volume }) => ({ name, tweet_volume }))(ans[i]);
   }
+  for (let i = 0; i < 10; i++) {
+    T.get("search/tweets", { q: ans2[i].name, count: 1, lang: "en" }, function(
+      err,
+      data,
+      response
+    ) {
+      data.statuses.forEach(function(tweet) {
+        // tweeList[i] = ({[ans2[i].name]: tweet.text});
+        tweeList[i] = tweet.text;
+      });
+    });
+  }
 });
 
 // console.log that your server is up and running
@@ -36,47 +49,66 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 app.get("/express_backend", (req, res) => {
   res.send({
     express: ans2,
-    misc: allInfo
+    misc: allInfo,
+    tweets: tweeList
   });
 });
 
-function runPy(){
-  return new Promise(async function(resolve, reject){
+function shortenTweet(inputTweet) {
+  if (inputTweet === undefined) {
+    var resultTweet = inputTweet;
+  } else if (inputTweet.length > 85) {
+    var resultTweet = inputTweet.substring(0, 82);
+    resultTweet = resultTweet + "...";
+  } else {
+    var resultTweet = inputTweet;
+  }
+  return resultTweet;
+}
+
+//commented out until fully integrated
+/*
+function runPy() {
+  return new Promise(async function(resolve, reject) {
     let options = {
-      mode: 'text',
-      scriptPath: './back-end/python/predict_sentiment.py',
-      args: ['-m', 'string value goes here']
+      mode: "text",
+      scriptPath: "../back-end/python",
+      args: ["-m", "string value goes here"]
     };
 
-    await PythonShell.run('predict_sentiment.py', options, function (err, results) {
+    await PythonShell.run("predict_sentiment.py", options, function(
+      err,
+      results
+    ) {
       if (err) throw err;
-      console.log('results: ');
-      for(let i of results){
+      console.log("results: ");
+      for (let i of results) {
         //console.log(i, "---->", typeof i)
       }
-      resolve(results)
+      resolve(results);
     });
-  })
+  });
 }
 
-function runMain(){
-  return new Promise(async function(resolve, reject){
-    let r =  await runPy()
+function runMain() {
+  return new Promise(async function(resolve, reject) {
+    let r = await runPy();
     //console.log() do whatever we want to do with the tweet here.
-  })
+  });
 }
 
-runMain() //run main function
-
+runMain(); //run main function
+ */
 
 // dummy info
 const allInfo = [
   {
     name: "Cohen",
     sentiment: "negative",
-    tweetMessage: "testing1",
+    tweetMessage: shortenTweet(
+      "loremEnim occaecat aliqua aliqua exercitation sint nostrud. Consectetur sunt non eiusmod nostrud dolor tempor voluptate irure commodo labore sint. Labore ut tempor consequat cillum ex aute sit veniam ad excepteur veniam sunt anim. ComUllamco culpa commodo officia consequat culpa eu quis anim aute enim veniam. Sint esse nostrud aliquip consequat sit occaecat consequat proident veniam labore ipsum. Aute fugiat nostrud dolor deserunt qui"
+    ),
     graph: {
-      xData: ["2/21", "2/22", "2/23", "2/24", "2/25", "2/26", "2/27"],
       yData: [20, 18, 12, 5, 10, 12, 4]
     },
     miscInfo1: "250k tweets"
@@ -84,9 +116,8 @@ const allInfo = [
   {
     name: "Jim Jordan",
     sentiment: "negative",
-    tweetMessage: "testing2",
+    tweetMessage: shortenTweet("testing2"),
     graph: {
-      xData: ["2/21", "2/22", "2/23", "2/24", "2/25", "2/26", "2/27"],
       yData: [, 25, 20, 10, 15, 11, 12]
     },
     miscInfo1: "187k tweets"
@@ -94,9 +125,8 @@ const allInfo = [
   {
     name: "#PokemonSwordShield",
     sentiment: "positive",
-    tweetMessage: "testing3",
+    tweetMessage: shortenTweet("testing3"),
     graph: {
-      xData: ["2/21", "2/22", "2/23", "2/24", "2/25", "2/26", "2/27"],
       yData: [undefined, undefined, undefined, undefined, undefined, 90, 95]
     },
     miscInfo1: "150k tweets"
@@ -104,9 +134,8 @@ const allInfo = [
   {
     name: "#PokemonDirect",
     sentiment: "positive",
-    tweetMessage: "testing4",
+    tweetMessage: shortenTweet("testing4"),
     graph: {
-      xData: ["2/21", "2/22", "2/23", "2/24", "2/25", "2/26", "2/27"],
       yData: [undefined, undefined, undefined, undefined, undefined, 91, 94]
     },
     miscInfo1: "112k tweets"
@@ -114,9 +143,8 @@ const allInfo = [
   {
     name: "Scorbunny",
     sentiment: "positive",
-    tweetMessage: "testing5",
+    tweetMessage: shortenTweet("testing5"),
     graph: {
-      xData: ["2/21", "2/22", "2/23", "2/24", "2/25", "2/26", "2/27"],
       yData: [undefined, undefined, undefined, undefined, undefined, 92, 98]
     },
     miscInfo1: "77.4k tweets"
@@ -124,9 +152,8 @@ const allInfo = [
   {
     name: "Grookey",
     sentiment: "positive",
-    tweetMessage: "testing6",
+    tweetMessage: shortenTweet("testing6"),
     graph: {
-      xData: ["2/21", "2/22", "2/23", "2/24", "2/25", "2/26", "2/27"],
       yData: [undefined, undefined, undefined, undefined, undefined, 97, 91]
     },
     miscInfo1: "60.2k tweets"
@@ -134,9 +161,8 @@ const allInfo = [
   {
     name: "Sobble",
     sentiment: "positive",
-    tweetMessage: "testing7",
+    tweetMessage: shortenTweet("testing7"),
     graph: {
-      xData: ["2/21", "2/22", "2/23", "2/24", "2/25", "2/26", "2/27"],
       yData: [undefined, undefined, undefined, undefined, undefined, 96, 93]
     },
     miscInfo1: "59.5k tweets"
@@ -144,9 +170,8 @@ const allInfo = [
   {
     name: "Mark Meadows",
     sentiment: "negative",
-    tweetMessage: "testing8",
+    tweetMessage: shortenTweet("testing8"),
     graph: {
-      xData: ["2/21", "2/22", "2/23", "2/24", "2/25", "2/26", "2/27"],
       yData: [40, 38, 30, 35, 20, 15, 12]
     },
     miscInfo1: "50k tweets"
@@ -154,9 +179,8 @@ const allInfo = [
   {
     name: "#PokemonDay",
     sentiment: "positive",
-    tweetMessage: "testing9",
+    tweetMessage: shortenTweet("testing9"),
     graph: {
-      xData: ["2/21", "2/22", "2/23", "2/24", "2/25", "2/26", "2/27"],
       yData: [85, 83, 80, 90, 95, 93, 94]
     },
     miscInfo1: "48.7k tweets"
@@ -164,9 +188,8 @@ const allInfo = [
   {
     name: "Pokémon",
     sentiment: "positive",
-    tweetMessage: "testing10",
+    tweetMessage: shortenTweet("testing10"),
     graph: {
-      xData: ["2/21", "2/22", "2/23", "2/24", "2/25", "2/26", "2/27"],
       yData: [85, 83, 82, 85, 90, 91, 92]
     },
     miscInfo1: "45k tweets"

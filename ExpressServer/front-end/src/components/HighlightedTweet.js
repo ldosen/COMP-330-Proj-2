@@ -1,13 +1,14 @@
 import React from "react";
-import TweetEmbed from "react-tweet-embed";
 
+//Renders the message content from the most recent tweet on a given topic.
 const HighlightedTweet = props => (
   <div id="highlighted-tweet-container">
     <h3 id="highlighted-tweet-description">
-      Most recent tweet about {props.name}:
+      Most recent tweet about{" "}
+      <span id="highlighted-tweet-topic-name">{props.name}</span> :
     </h3>
 
-    <h2 id="highlighted-tweet">"{props.tweetMessage}"</h2>
+    <h2 id="highlighted-tweet">{props.tweetMessage}</h2>
   </div>
 );
 

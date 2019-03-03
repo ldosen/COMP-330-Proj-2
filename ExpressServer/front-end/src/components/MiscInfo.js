@@ -1,10 +1,15 @@
 import React from "react";
 
-const MiscInfo = props => (
-  <div id="misc-info">
-    <h3>Tweet Volume:</h3>
-    <h2>{props.miscInfo1}</h2>
-  </div>
-);
+//Renders Tweet Volume for a given trend
+class MiscInfo extends React.Component {
+  render() {
+    return (
+      <div id="misc-info">
+        <h3 id="tweet-volume-label">Tweet Volume:</h3>
+        <h1 id="tweet-volume">{this.props.miscInfo1}</h1>
+      </div>
+    );
+  }
+}
 
 export default MiscInfo;
