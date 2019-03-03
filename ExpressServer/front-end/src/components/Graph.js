@@ -63,7 +63,7 @@ class Graph extends React.Component {
                 {
                   data: this.props.yData,
                   fill: false, // Don't fill area under the line
-                  borderColor: "green" // Line color
+                  borderColor: "#1da1f2" // Line color
                 }
               ]
             }}

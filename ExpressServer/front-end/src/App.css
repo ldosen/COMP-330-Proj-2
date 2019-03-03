@@ -53,6 +53,7 @@ li {
   background: #1da1f2;
   box-shadow: 0em 1em 2em -1em rgba(0, 0, 0, 0.75);
   padding: 1em;
+  border-radius: 1vh;
 }
 
 #topic-list-container {
@@ -76,6 +77,7 @@ li {
   border-style: solid;
   border-width: 0.1em 0.2em 0.1em 0.2em;
   border-color: #aab8c2;
+  border-radius: 0.75vh;
   margin-left: 0.5em;
   display: flex;
   flex-direction: column;
@@ -88,6 +90,7 @@ li {
   grid-template-rows: 1fr 1fr;
   background: #f5f8fa;
   margin: 1em;
+  border-radius: 1vh;
 }
 
 #highlighted-tweet-container {
@@ -138,11 +141,11 @@ li {
 }
 
 .positive {
-  color: green;
+  color: #66aa33;
 }
 
 .negative {
-  color: red;
+  color: #e31837;
 }
 
 #graph-container {
