@@ -3,25 +3,26 @@ import re
 import pickle
 from tweetclassifier.vectorizer import vect
 import numpy as np
-import argparse
+import sys
+import json
 
 
-def main(message):
-    clf = pickle.load(open(os.path.join('tweetclassifier', 'pkl_objects', 'classifier.pkl'), 'rb'))
-
-    label = {0: 'negative', 1: 'positive'}
-
-    example = ['I hate him']
-    X = vect.transform(example)
-    predicted_class = label[clf.predict(X)[0]]
-
-    return predicted_class
+def read_in():
+    lines = sys.stdin.readlines()
+    # Since our input would only be having one line, parse our JSON data from that
+    return json.loads(lines[0])
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-m", "--message", type=str)
-args = parser.parse_args()
+def main():
+    clf = pickle.load(open(os.path.join('back-end', 'python', 'tweetclassifier', 'pkl_objects', 'classifier.pkl'), 'rb'))
+
+    message = read_in()
+    X = vect.transform(message)
+    # 0 is returned for negative, 1 is returned for positive
+    predicted_class = clf.predict(X)[0]
+
+    print(predicted_class)
+
 
 if __name__ == '__main__':
-    main(args.message)
-
+    main()
