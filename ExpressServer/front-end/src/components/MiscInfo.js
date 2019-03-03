@@ -5,8 +5,8 @@ class MiscInfo extends React.Component {
   render() {
     return (
       <div id="misc-info">
-        <h3>Tweet Volume:</h3>
-        <h2>{this.props.miscInfo1}</h2>
+        <h3 id="tweet-volume-label">Tweet Volume:</h3>
+        <h1 id="tweet-volume">{this.props.miscInfo1}</h1>
       </div>
     );
   }
