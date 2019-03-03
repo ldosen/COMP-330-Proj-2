@@ -11,7 +11,7 @@ var T = new Twit({
 });
 var ans = [];
 var ans2 = [];
-var tweeMap = {};
+var tweeList = [];
 var params = {
   id: "2379574"
   // count: 3
@@ -29,7 +29,7 @@ T.get("trends/place", params, function (err, data, response) {
 for (let i = 0; i < 10; i++) {
   T.get('search/tweets', { q: ans2[i].name, count: 2 }, function (err, data, response) {
     data.statuses.forEach(function (tweet) {
-      tweeMap[ans2[i].name] = tweet.text;
+      tweeList[i] = ({[ans2[i].name]: tweet.text});
     })
   })
 
@@ -45,7 +45,7 @@ app.get("/express_backend", (req, res) => {
   res.send({
     express: ans2,
     // misc: allInfo,
-    tweets: tweeMap
+    tweets: tweeList
   });
 });
 
