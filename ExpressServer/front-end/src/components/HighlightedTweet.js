@@ -8,7 +8,7 @@ const HighlightedTweet = props => (
       <span id="highlighted-tweet-topic-name">{props.name}</span> :
     </h3>
 
-    <h2 id="highlighted-tweet">"{props.tweetMessage}"</h2>
+    <h2 id="highlighted-tweet">{props.tweetMessage}</h2>
   </div>
 );
 
