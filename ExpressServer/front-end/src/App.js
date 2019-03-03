@@ -25,7 +25,9 @@ class App extends React.Component {
         //to state. splitting up into arrays has been our only functioning solution
         console.log(serverData);
         this.allTopics = serverData.express.map(x => x.name);
-        this.allTweetVolumes = serverData.express.map(x => x.tweet_volume);
+        this.allTweetVolumes = serverData.express.map(x =>
+          this.numberWithCommas(x.tweet_volume)
+        );
         this.allSentiments = serverData.misc.map(x => x.sentiment);
         this.allTweetMessages = serverData.misc.map(x => x.tweetMessage);
         this.allGraphX = serverData.misc.map(x => x.graph.xData);
@@ -47,6 +49,18 @@ class App extends React.Component {
   allGraphX = [];
 
   allGraphY = [];
+
+  //function to separate every three digits of tweet volumes with commas and return "TBD"
+  //if tweet volume not returned from Twitter API
+  //else part taken from users Kerry Jones and Elias Zamaria on StackOverflow:
+  //https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+  numberWithCommas = x => {
+    if (x === undefined || x === null) {
+      return "TBD";
+    } else {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+  };
 
   //map from which all data for components in TopicInfo is derived
   topicInfo = {
@@ -157,10 +171,6 @@ class App extends React.Component {
                 <li
                   onClick={() => {
                     this.selectTopic(4);
-                    console.log(
-                      JSON.stringify(this.state.data.express[0].name)
-                    );
-                    console.log(this.state.selectedTopic);
                   }}
                 >
                   <Topic
