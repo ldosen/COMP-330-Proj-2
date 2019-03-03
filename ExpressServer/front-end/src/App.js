@@ -29,7 +29,8 @@ class App extends React.Component {
           this.numberWithCommas(x.tweet_volume)
         );
         this.allSentiments = serverData.misc.map(x => x.sentiment);
-        this.allTweetMessages = serverData.misc.map(x => x.tweetMessage);
+        this.allTweetMessages = serverData.tweets.map(x => x);
+        console.log(serverData.tweets);
         this.allGraphX = serverData.misc.map(x => x.graph.xData);
         this.allGraphY = serverData.misc.map(x => x.graph.yData);
         this.setState({ data: serverData });
