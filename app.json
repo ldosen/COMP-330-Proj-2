@@ -1,0 +1,21 @@
+{
+  "name": "tweettrend",
+  "description": "web app displaying sentiment analysis of trending tweets",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
