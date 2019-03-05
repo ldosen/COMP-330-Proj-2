@@ -56,7 +56,7 @@ T.get("trends/place", params, function(err, data, response) {
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 // create a GET route
-app.get("/express_backend", (req, res) => {
+app.get("https://tweettrend.herokuapp.com/express_backend", (req, res) => {
   res.send({
     express: ans2,
     misc: allInfo,

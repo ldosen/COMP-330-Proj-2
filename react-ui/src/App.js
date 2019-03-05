@@ -14,7 +14,7 @@ class App extends React.Component {
 
   //when page loads, call server to get all topics and topic info
   componentDidMount() {
-    fetch("/express_backend")
+    fetch("https://tweettrend.herokuapp.com/express_backend")
       .then(res => {
         console.log(res);
         return res.json();
