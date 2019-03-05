@@ -21,11 +21,11 @@ var params = {
 
 if (process.env.NODE_ENV === 'production') {
   // Exprees will serve up production assets
-  app.use(express.static('react-ui/public'));
+  app.use(express.static('react-ui/build'));
 
   // Express serve up index.html file if it doesn't recognize route
   app.get('*', (request, response) => {
-    response.sendFile(path.resolve(__dirname, 'react-ui', 'public', 'index.html'));
+    response.sendFile(path.resolve(__dirname, 'react-ui', 'build', 'index.html'));
   });
 }
 
