@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
 
   // Express serve up index.html file if it doesn't recognize route
   app.get('*', (request, response) => {
-    response.sendFile(path.join(__dirname, 'react-ui/public', 'index.html'));
+    response.sendFile(path.resolve(__dirname, 'react-ui', 'public', 'index.html'));
   });
 }
 
