@@ -1,5 +1,6 @@
 require("dotenv").load();
 var Twit = require("twit");
+const path = require("path");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
@@ -17,6 +18,16 @@ var params = {
   id: "2379574"
   // count: 3
 };
+
+if (process.env.NODE_ENV === 'production') {
+  // Exprees will serve up production assets
+  app.use(express.static('react-ui/build'));
+
+  // Express serve up index.html file if it doesn't recognize route
+  app.get('*', (request, response) => {
+    response.sendFile(path.resolve(__dirname, 'react-ui', 'build', 'index.html'));
+  });
+}
 
 T.get("trends/place", params, function(err, data, response) {
   var trends = data[0].trends;
